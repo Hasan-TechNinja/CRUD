@@ -58,7 +58,7 @@ def update(request, id):
 
 def deleteData(request, pk):
 
-    data = get_object_or_404(Data, pk=pk)
+    data = get_object_or_404(Data, pk=pk, user = request.user)
 
     data.delete()
  

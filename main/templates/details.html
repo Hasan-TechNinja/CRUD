@@ -2,8 +2,19 @@
 {% load static %}
 {% block title %}Add new{% endblock title %}
 {% block content %}
-<div>
-    {{data.title}}
-    {{data.description}}
+<div class="min-h-screen">
+    <div class="bg-slate-200 p-6">
+        <div class="font-bold mb-2">
+            {{data.title}}
+        </div>
+        <hr class="border-1">    
+        <div class="bg-gray-100 rounded-md p-2">
+            {{data.description}}
+        </div>
+        <div class='mt-4'>
+            <button class="mx-1 bg-yellow-300 rounded-md p-2 text-sm text-black hover:shadow-md" type="submit"><a href="{% url "update" data.id %}">Update</a></button>
+            <button class="mx-1 bg-red-400 rounded-md p-2 text-sm text-black hover:shadow-md" type="submit"><a href="{% url "delete" data.id %}">Delete</a></button>
+        </div>
+    </div>
 </div>
 {% endblock content %}

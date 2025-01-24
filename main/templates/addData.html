@@ -2,7 +2,7 @@
 {% load static %}
 {% block title %}Add data{% endblock title %}
 {% block content %}
-<div>
+<div class="min-h-screen">
     <form action="" method="POST">
         {% csrf_token %}
         {% for form in form %}
@@ -14,7 +14,7 @@
         </div>
         {% endif %}
         {% endfor %}
-        <button type="submit">submit</button>
+        <button class="mx-1 bg-blue-500 rounded-md p-2 text-sm text-white hover:shadow-md" type="submit">submit</button>
     </form>
 </div>
 {% endblock content %}

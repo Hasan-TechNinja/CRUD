@@ -20,11 +20,11 @@
                 <td class="border border-gray-300 px-4 py-2">{{ forloop.counter }}</td>
                 <td class="border border-gray-300 px-4 py-2">{{ item.user.username }}</td>
                 <td class="border border-gray-300 px-4 py-2">{{ item.title }}</td>
-                <td class="border border-gray-300 px-4 py-2">{{ item.description }}</td>
+                <td class="border border-gray-300 px-4 py-2">{{ item.description|striptags|truncatechars:200 }}</td>
                 <td class="border border-gray-300 px-4 py-2">
-                    <a class="mx-1 bg-yellow-600 rounded-md p-1 text-sm text-white" href="{% url "update" item.id %}">Update</a>
-                    <a class="mx-1 bg-green-600 rounded-md p-1 text-sm text-white" href="{% url "details" item.id %}">Show</a>
-                    <a class="mx-1 bg-red-600 rounded-md p-1 text-sm text-white" href="{% url "delete" item.id %}">Delete</a>
+                    <a class="mx-1 bg-yellow-300 rounded-md p-2 text-sm text-black hover:shadow-md" href="{% url "update" item.id %}">Update</a>
+                    <a class="mx-1 bg-green-300 rounded-md p-2 text-sm text-black hover:shadow-md" href="{% url "details" item.id %}">Show</a>
+                    <a class="mx-1 bg-red-300 rounded-md p-2 text-sm text-black hover:shadow-md" href="{% url "delete" item.id %}">Delete</a>
                 </td>
             </tr>
             {% empty %} 

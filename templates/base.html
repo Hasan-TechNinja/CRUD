@@ -16,12 +16,12 @@
                 <li><a href="{% url 'home' %}" class="hover:underline">Home</a></li>
             </ul>
             <ul class="flex space-x-4">
-                <li><a href="#" class="hover:underline">Show</a></li>
-                <li><a href="{% url 'add' %}" class="hover:underline">Add New</a></li>
+                {% comment %} <li><a href="#" class="hover:underline">Show</a></li> {% endcomment %}
+                <li><a href="{% url 'add' %}" class="hover:underline mx-1 bg-teal-300 rounded-md p-2 text-sm text-black hover:shadow-md">Add New</a></li>
             </ul>
             <ul class="flex space-x-4">
                 {% if user.is_authenticated %}
-                <li><a href="#" class="hover:underline">Profile</a></li>
+                {% comment %} <li><a href="#" class="hover:underline">Profile</a></li> {% endcomment %}
                 <li><a href="{% url "logout" %}" class="hover:underline">Logout</a></li>
                 {% else %}
                 <li><a href="{% url "login" %}" class="hover:underline">Login</a></li>

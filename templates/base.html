@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %}
+{% load static tailwind_tags %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% tailwind_css %}
+    <title>{% block title %}My Website{% endblock title %}</title>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <!-- Navigation -->
+    <nav class="container mx-auto bg-rose-600 text-white py-4 px-2">
+        <div class="flex justify-between items-center">
+            <ul class="flex space-x-4">
+                <li><a href="{% url 'home' %}" class="hover:underline">Home</a></li>
+            </ul>
+            <ul class="flex space-x-4">
+                <li><a href="#" class="hover:underline">Show</a></li>
+                <li><a href="{% url 'add' %}" class="hover:underline">Add New</a></li>
+            </ul>
+            <ul class="flex space-x-4">
+                <li><a href="#" class="hover:underline">Profile</a></li>
+                <li><a href="{% url "login" %}" class="hover:underline">Login</a></li>
+                <li><a href="{% url "registration" %}" class="hover:underline">Registration</a></li>
+                <li><a href="#" class="hover:underline">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto my-8">
+        {% block content %}
+        <p>Welcome to the site! Customize this content in child templates.</p>
+        {% endblock content %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2025 My Website. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

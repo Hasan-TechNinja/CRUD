@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Update{% endblock title %}
+{% block content %}
+<div>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {% for form in form %}
+        <div>
+            {{form.label_tag}}
+        </div>
+        <div>
+            {{form}}
+        </div>
+
+        {% if form.errors %}
+        <div>
+            {{form.errors}}
+        </div>
+        {% endif %}
+        {% endfor %}
+        <button type="submit">submit</button>
+    </form>
+</div>
+{% endblock content %}

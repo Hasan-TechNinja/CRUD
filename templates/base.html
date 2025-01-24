@@ -20,10 +20,13 @@
                 <li><a href="{% url 'add' %}" class="hover:underline">Add New</a></li>
             </ul>
             <ul class="flex space-x-4">
+                {% if user.is_authenticated %}
                 <li><a href="#" class="hover:underline">Profile</a></li>
+                <li><a href="{% url "logout" %}" class="hover:underline">Logout</a></li>
+                {% else %}
                 <li><a href="{% url "login" %}" class="hover:underline">Login</a></li>
                 <li><a href="{% url "registration" %}" class="hover:underline">Registration</a></li>
-                <li><a href="{% url "logout" %}" class="hover:underline">Logout</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>

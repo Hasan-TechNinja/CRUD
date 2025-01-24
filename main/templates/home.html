@@ -3,7 +3,7 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-<div class="container mx-auto mt-6">
+<div class="container mx-auto mt-6 min-h-screen">
     <table class="table-auto border-collapse border border-gray-300 w-full text-left">
         <thead class="bg-gray-200">
             <tr>
@@ -19,9 +19,13 @@
             <tr class="{% cycle 'bg-white' 'bg-gray-50' %}">
                 <td class="border border-gray-300 px-4 py-2">{{ forloop.counter }}</td>
                 <td class="border border-gray-300 px-4 py-2">{{ item.user.username }}</td>
-                <td class="border border-gray-300 px-4 py-2"><a href="{% url "details" item.id %}">{{ item.title }}</a></td>
+                <td class="border border-gray-300 px-4 py-2">{{ item.title }}</td>
                 <td class="border border-gray-300 px-4 py-2">{{ item.description }}</td>
-                <td class="border border-gray-300 px-4 py-2"><a href="{% url "update" item.id %}">Update</a></td>
+                <td class="border border-gray-300 px-4 py-2">
+                    <a class="mx-1 bg-yellow-600 rounded-md p-1 text-sm text-white" href="{% url "update" item.id %}">Update</a>
+                    <a class="mx-1 bg-green-600 rounded-md p-1 text-sm text-white" href="{% url "details" item.id %}">Show</a>
+                    <a class="mx-1 bg-red-600 rounded-md p-1 text-sm text-white" href="{% url "delete" item.id %}">Delete</a>
+                </td>
             </tr>
             {% empty %} 
             <tr>

@@ -1,18 +1,21 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from . models import Data
 from . forms import DataForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+@login_required(login_url='login')
 def home(request):
-    data = Data.objects.all()
+    user = request.user
+    data = Data.objects.filter(user=user)
     context = {
         'data':data
     }
     return render(request, 'home.html', context)
 
 
-
+@login_required(login_url='login')
 def addData(request):
     if request.method == "POST":
         form = DataForm(request.POST)
@@ -27,7 +30,7 @@ def addData(request):
     context = {'form': form}
     return render(request, 'addData.html', context)
 
-
+@login_required(login_url='login')
 def details(request, id):
     data = Data.objects.get(id=id, user=request.user)
     context = {
@@ -35,7 +38,7 @@ def details(request, id):
     }
     return render(request, 'details.html', context)
 
-
+@login_required(login_url='login')
 def update(request, id):
     data = get_object_or_404(Data, id = id)
     if request.method == 'POST':
@@ -51,3 +54,12 @@ def update(request, id):
     }
 
     return render(request, 'update.html', context)
+
+
+def deleteData(request, pk):
+
+    data = get_object_or_404(Data, pk=pk)
+
+    data.delete()
+ 
+    return redirect('home')
